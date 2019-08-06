@@ -26,7 +26,16 @@ public class Move : MonoBehaviour
         }
         moveDirection.y -= gravity * Time.deltaTime;
         Cc.Move(moveDirection * Time.deltaTime);
+
+        if (Input.GetKeyDown(KeyCode.Mouse0))
+        {
+            Debug.Log("Rotate");
+            Debug.Log(Input.mousePosition);
+            Debug.Log(Camera.main.ViewportToWorldPoint(Input.mousePosition));
+        }
  
     }
+
+
     
 }
