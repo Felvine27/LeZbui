@@ -14,7 +14,6 @@ GameObject:
   - component: {fileID: 5074047867086682044}
   - component: {fileID: 5074047867086682016}
   - component: {fileID: 5074047867086682023}
-  - component: {fileID: 8885083270252714165}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Enemy
@@ -133,20 +132,6 @@ NavMeshAgent:
   m_BaseOffset: 1
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
---- !u!114 &8885083270252714165
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5074047867086682045}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 66d2091e6b97b9b438ee56c0423e873e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  attackCooldownTime: 5
-  attackAreaDuration: 2
 --- !u!1 &5561976150752758950
 GameObject:
   m_ObjectHideFlags: 0
@@ -157,7 +142,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1197271174107126375}
   - component: {fileID: 6076530957540303888}
-  - component: {fileID: 4350121592263552836}
+  - component: {fileID: 3813046391318461198}
   m_Layer: 0
   m_Name: EnemyAttackArea
   m_TagString: Untagged
@@ -188,11 +173,11 @@ BoxCollider:
   m_GameObject: {fileID: 5561976150752758950}
   m_Material: {fileID: 0}
   m_IsTrigger: 1
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 0.5}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &4350121592263552836
+--- !u!114 &3813046391318461198
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -201,7 +186,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 5561976150752758950}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 66d2091e6b97b9b438ee56c0423e873e, type: 3}
+  m_Script: {fileID: 11500000, guid: 7c8be2f66b402bf4d85ccf7957b48545, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   attackCooldownTime: 3
