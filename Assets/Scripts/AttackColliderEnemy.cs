@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class AttackColliderEnemy : MonoBehaviour
 {
@@ -27,6 +28,7 @@ public class AttackColliderEnemy : MonoBehaviour
 
     private void AttackMethod()
     {
+        gameObject.GetComponent<MeshRenderer>().enabled = true;
         canAttack = false;
         TriggerAttackCooldownCoroutine();
         attackArea.enabled = true;
@@ -41,7 +43,9 @@ public class AttackColliderEnemy : MonoBehaviour
     private IEnumerator AttackTimerCoroutine()
     {    
         yield return new WaitForSeconds(attackAreaDuration);
+        gameObject.GetComponent<MeshRenderer>().enabled = false;
         attackArea.enabled = false;
+
     }
 
     public void TriggerAttackCooldownCoroutine()
@@ -59,7 +63,7 @@ public class AttackColliderEnemy : MonoBehaviour
     {
 
         if (playerCollided.CompareTag("Player"))
-            playerCollided.gameObject.SetActive(false);
+            SceneManager.LoadScene(0);
 
     }
 }
