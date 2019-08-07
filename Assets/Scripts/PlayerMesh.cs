@@ -7,6 +7,9 @@ public class PlayerMesh : MonoBehaviour
 
     public NavMeshAgent agent;
 
+    [SerializeField]
+    private LayerMask layerMask;
+
     // Update is called once per frame
     void Update()
     {
@@ -35,10 +38,20 @@ public class PlayerMesh : MonoBehaviour
             Ray ray1 = cam.ScreenPointToRay(Input.mousePosition);
             RaycastHit hit;
 
-            if(Physics.Raycast(ray1, out hit))
+            if (Physics.Raycast(ray1, out hit))
             {
                 agent.SetDestination(hit.point);
             }
         }
+
+        if (!Physics.Raycast(gameObject.transform.position, gameObject.transform.position - new Vector3(gameObject.transform.position.x, 5F, gameObject.transform.position.z), 5F, layerMask))
+        {
+
+            GetComponent<NavMeshAgent>().enabled = false;
+
+        }
+
+        Debug.DrawLine(gameObject.transform.position, gameObject.transform.position - gameObject.transform.up * 1.2f, Color.red, Time.deltaTime);
+
     }
 }

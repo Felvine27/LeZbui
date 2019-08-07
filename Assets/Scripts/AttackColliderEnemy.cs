@@ -21,7 +21,8 @@ public class AttackColliderEnemy : MonoBehaviour
 
     private void Update()
     {
-        AttackMethod();
+        if(canAttack)
+            AttackMethod();
     }
 
     private void AttackMethod()
@@ -38,8 +39,7 @@ public class AttackColliderEnemy : MonoBehaviour
     }
 
     private IEnumerator AttackTimerCoroutine()
-    {
-        
+    {    
         yield return new WaitForSeconds(attackAreaDuration);
         attackArea.enabled = false;
     }
@@ -51,17 +51,15 @@ public class AttackColliderEnemy : MonoBehaviour
 
     private IEnumerator AttackCooldownCoroutine()
     {
-        Debug.Log("Cooldown started");
         yield return new WaitForSeconds(attackCooldownTime);
-        Debug.Log("Cooldown ended");
         canAttack = true;
     }
 
-    private void OnTriggerEnter(Collider enemyCollided)
+    private void OnTriggerEnter(Collider playerCollided)
     {
 
-        if (enemyCollided.CompareTag("Enemy"))
-            Destroy(enemyCollided.gameObject);
+        if (playerCollided.CompareTag("Player"))
+            playerCollided.gameObject.SetActive(false);
 
     }
 }

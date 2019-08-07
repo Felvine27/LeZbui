@@ -32,7 +32,8 @@ public class EnemyAi : MonoBehaviour
     void Update()
     {
 
-        Target = GameObject.Find("Player").transform;
+        if(GameObject.Find("Player").gameObject.activeInHierarchy)
+            Target = GameObject.Find("Player").transform;
 
         Distance = Vector3.Distance(Target.position, transform.position);
 
