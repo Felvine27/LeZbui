@@ -21,6 +21,8 @@ public class ColliderTrigger : MonoBehaviour
     private void OnTriggerEnter(Collider collider)
     {
 
+        Debug.Log("Collided");
+
         if (collider.CompareTag("Player"))
             TriggerTileActivationCoroutine();
         

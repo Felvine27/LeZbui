@@ -53,6 +53,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: TileMapRedLines
       objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: c74b8bb46cd66be4281c879076947c66,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: c74b8bb46cd66be4281c879076947c66,
         type: 3}
       propertyPath: m_LocalPosition.x
