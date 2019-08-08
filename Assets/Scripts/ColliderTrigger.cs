@@ -8,6 +8,9 @@ public class ColliderTrigger : MonoBehaviour
     [SerializeField]
     private Rigidbody rigidbodyTile;
 
+    [SerializeField]
+    private float timeTrapActivation = 2.0F;
+
     void Start()
     {
 
@@ -35,7 +38,8 @@ public class ColliderTrigger : MonoBehaviour
 
     private IEnumerator TileActivationCoroutine()
     {
-        yield return new WaitForSeconds(3.0F);
+        yield return new WaitForSeconds(timeTrapActivation);
+        rigidbodyTile.gameObject.GetComponent<BoxCollider>().enabled = false;
         rigidbodyTile.isKinematic = false;
     }
 

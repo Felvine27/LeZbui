@@ -29,10 +29,12 @@ public class AttackCollider : MonoBehaviour
 
     private void AttackMethod()
     {
+        gameObject.GetComponent<MeshRenderer>().enabled = true;
         canAttack = false;
         TriggerAttackCooldownCoroutine();
         attackArea.enabled = true;
         TriggerAttackTimerCoroutine();
+
     }
 
     public void TriggerAttackTimerCoroutine()
@@ -44,6 +46,7 @@ public class AttackCollider : MonoBehaviour
     {
         yield return new WaitForSeconds(attackAreaDuration);
         attackArea.enabled = false;
+        gameObject.GetComponent<MeshRenderer>().enabled = false;
     }
 
     public void TriggerAttackCooldownCoroutine()
