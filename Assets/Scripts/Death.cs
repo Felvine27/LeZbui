@@ -18,10 +18,11 @@ public class Death : MonoBehaviour
     }
 
     private void OnTriggerEnter(Collider EverythingColided)
-    {      
-        
-        if (EverythingColided.CompareTag("Player"))
+    {
+
+        if (EverythingColided.CompareTag("Player")) 
             SceneManager.LoadScene(0);
+        Debug.Log(EverythingColided.name);
     }
 
 }

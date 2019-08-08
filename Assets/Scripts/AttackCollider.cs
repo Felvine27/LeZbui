@@ -43,7 +43,6 @@ public class AttackCollider : MonoBehaviour
 
     private void AttackMethod()
     {
-        gameObject.GetComponent<MeshRenderer>().enabled = true;
         IsAttacking = true;
         canAttack = false;
         TriggerAttackCooldownCoroutine();
@@ -62,7 +61,6 @@ public class AttackCollider : MonoBehaviour
         yield return new WaitForSeconds(attackAreaDuration);
         attackArea.enabled = false;
         IsAttacking = false;
-        gameObject.GetComponent<MeshRenderer>().enabled = false;
     }
 
     public void TriggerAttackCooldownCoroutine()
@@ -72,9 +70,7 @@ public class AttackCollider : MonoBehaviour
 
     private IEnumerator AttackCooldownCoroutine()
     {
-        Debug.Log("Cooldown started");
         yield return new WaitForSeconds(attackCooldownTime);
-        Debug.Log("Cooldown ended");
         canAttack = true;
     }
 

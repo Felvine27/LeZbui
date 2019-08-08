@@ -51,8 +51,8 @@ public class PlayerMesh : MonoBehaviour
             animator.SetBool("run", true);
 
 
-            Debug.Log("mousePos:" + mousePos.magnitude);
-            Debug.Log("gameObject" + gameObject.transform.position.magnitude);
+           
+          
 
             //isMoving = true;
 
@@ -71,7 +71,7 @@ public class PlayerMesh : MonoBehaviour
         
         if (!agent.hasPath)
         {
-            Debug.Log("Stop Run");
+            
             animator.SetBool("run", false);
         }
         else
@@ -83,6 +83,7 @@ public class PlayerMesh : MonoBehaviour
         {
 
             GetComponent<NavMeshAgent>().enabled = false;
+          
 
         }
 
