@@ -24,7 +24,7 @@ public class PlayerMesh : MonoBehaviour
     void Update()
     {
 
-        if (Input.GetKeyDown(KeyCode.Mouse0) && !FindObjectOfType<AttackCollider>().IsAttacking)
+        if (Input.GetKeyDown(KeyCode.Mouse0) && !FindObjectOfType<AttackCollider>().IsAttacking && FindObjectOfType<AttackCollider>().CanAttack)
         {
 
             animator.Play("Armature|Attack");

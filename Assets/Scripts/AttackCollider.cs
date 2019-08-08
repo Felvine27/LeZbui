@@ -8,6 +8,12 @@ public class AttackCollider : MonoBehaviour
     private BoxCollider attackArea;
     private bool canAttack = true;
 
+    public bool CanAttack
+    {
+        get { return canAttack; }
+        set { canAttack = value; }
+    }
+
     public bool _isAttacking = false;
 
     public bool IsAttacking
