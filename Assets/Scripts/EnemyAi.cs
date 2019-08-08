@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class EnemyAi : MonoBehaviour
 {
-
+    public bool wallk = false;   
     private float Distance;
 
     private float DistanceBase;
@@ -18,12 +18,9 @@ public class EnemyAi : MonoBehaviour
 
     private UnityEngine.AI.NavMeshAgent agent;
 
-    //private Animation animations;
-
     void Start()
     {
         agent = gameObject.GetComponent<UnityEngine.AI.NavMeshAgent>();
-        //animations = gameObject.GetComponent<Animation>();
         basePositions = transform.position;
     }
 
@@ -59,6 +56,7 @@ public class EnemyAi : MonoBehaviour
     void chase()
     {
         agent.destination = Target.position;
+        gameObject.GetComponent<Animator>().SetBool("walk", true);
     }
 
     void attack()

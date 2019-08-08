@@ -10,6 +10,9 @@ public class AttackColliderEnemy : MonoBehaviour
     private bool canAttack = true;
 
     [SerializeField]
+    private Animator animator;
+
+    [SerializeField]
     private float attackCooldownTime = 3.0F;
 
     [SerializeField]
@@ -28,9 +31,12 @@ public class AttackColliderEnemy : MonoBehaviour
 
     private void AttackMethod()
     {
-        gameObject.GetComponent<MeshRenderer>().enabled = true;
         canAttack = false;
         TriggerAttackCooldownCoroutine();
+
+
+        animator.SetBool("attack", true);
+
         attackArea.enabled = true;
         TriggerAttackTimerCoroutine();
     }
@@ -43,8 +49,8 @@ public class AttackColliderEnemy : MonoBehaviour
     private IEnumerator AttackTimerCoroutine()
     {    
         yield return new WaitForSeconds(attackAreaDuration);
-        gameObject.GetComponent<MeshRenderer>().enabled = false;
         attackArea.enabled = false;
+        animator.SetBool("attack", false);
 
     }
 
@@ -62,8 +68,13 @@ public class AttackColliderEnemy : MonoBehaviour
     private void OnTriggerEnter(Collider playerCollided)
     {
 
-        if (playerCollided.CompareTag("Player"))
-            SceneManager.LoadScene(0);
+        if (playerCollided.CompareTag("Player")) 
+            LifeManager.LifePoints--;
 
+        if (LifeManager.LifePoints == 0)
+        {
+            SceneManager.LoadScene(0);
+            LifeManager.LifePoints = 3;
+        }
     }
 }

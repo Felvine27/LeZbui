@@ -8,6 +8,14 @@ public class AttackCollider : MonoBehaviour
     private BoxCollider attackArea;
     private bool canAttack = true;
 
+    public bool _isAttacking = false;
+
+    public bool IsAttacking
+    {
+        get { return _isAttacking; }
+        set { _isAttacking = value; }
+    }
+
     [SerializeField]
     private float attackCooldownTime = 5.0F;
 
@@ -19,7 +27,7 @@ public class AttackCollider : MonoBehaviour
         attackArea = GetComponent<BoxCollider>();
     }
 
-    private void Update()
+    private void LateUpdate()
     {
         if (Input.GetKeyDown(KeyCode.Mouse0) && canAttack)
         {
@@ -30,6 +38,7 @@ public class AttackCollider : MonoBehaviour
     private void AttackMethod()
     {
         gameObject.GetComponent<MeshRenderer>().enabled = true;
+        IsAttacking = true;
         canAttack = false;
         TriggerAttackCooldownCoroutine();
         attackArea.enabled = true;
@@ -46,6 +55,7 @@ public class AttackCollider : MonoBehaviour
     {
         yield return new WaitForSeconds(attackAreaDuration);
         attackArea.enabled = false;
+        IsAttacking = false;
         gameObject.GetComponent<MeshRenderer>().enabled = false;
     }
 
